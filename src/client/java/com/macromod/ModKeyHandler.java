@@ -17,13 +17,13 @@ public class ModKeyHandler {
         // Listen to client tick events
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (ModKeybinds.TOGGLE_MINING.wasPressed()) {
-                miningMacroActive = !miningMacroActive; // flip the toggle
-                
+                miningMacroActive = !miningMacroActive; 
+                if(miningMacroActive) MiningMacro.start(client);
             }
 
             // Apply the action if toggle is enabled
             if (miningMacroActive && client.player != null) {
-                MiningMacro.update(client);
+                MiningMacro.update();
             }
         });
 
