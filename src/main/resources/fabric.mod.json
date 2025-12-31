@@ -26,12 +26,16 @@
 		]
 	},
 	"mixins": [
-		"macromod.mixins.json",
+		{
+			"config": "macromod.server.mixins.json",
+			"environment": "server"
+		},
 		{
 			"config": "macromod.client.mixins.json",
 			"environment": "client"
 		}
 	],
+
 	"depends": {
 		"fabricloader": ">=0.18.4",
 		"minecraft": "~1.21.11",

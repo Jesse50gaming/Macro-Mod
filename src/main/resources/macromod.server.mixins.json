@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "com.macromod.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "server": [
+    "ExampleMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

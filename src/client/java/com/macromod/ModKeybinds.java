@@ -11,6 +11,6 @@ public class ModKeybinds {
     public static KeyBinding TOGGLE_MINING;
 
     public static void register() {
-        TOGGLE_MINING = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.mymod.toggle_mining", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_P, KeyBinding.Category.MISC));
+        TOGGLE_MINING = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.mymod.toggle_mining", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_I, KeyBinding.Category.MISC));
     }
 }
