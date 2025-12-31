@@ -11,13 +11,6 @@ public class ModKeybinds {
     public static KeyBinding TOGGLE_MINING;
 
     public static void register() {
-        TOGGLE_MINING = KeyBindingHelper.registerKeyBinding(
-            new KeyBinding(
-                "key.mymod.toggle_mining", // translation key
-                InputUtil.Type.KEYSYM,     // keyboard
-                GLFW.GLFW_KEY_K,           // default key
-                KeyBinding.Category.MISC         // category in controls menu
-            )
-        );
+        TOGGLE_MINING = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.mymod.toggle_mining", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_P, KeyBinding.Category.MISC));
     }
 }
