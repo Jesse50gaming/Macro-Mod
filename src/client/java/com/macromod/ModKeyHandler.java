@@ -23,8 +23,7 @@ public class ModKeyHandler {
 
             // Apply the action if toggle is enabled
             if (miningMacroActive && client.player != null) {
-                MiningMacro.update();
-                client.player.setSprinting(true);
+                MiningMacro.update(client);
             }
         });
 
