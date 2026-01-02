@@ -3,7 +3,7 @@ package com.macromod.macros;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-
+import com.macromod.MacroMod;
 import com.macromod.Utils;
 
 import net.minecraft.block.Block;
@@ -90,7 +90,7 @@ public class MiningMacro {
                 updateMoveForward();
                 break;
             case SCAN_ORES:
-                // No continuous update needed
+                updateScanOres();
                 break;
         }
 
@@ -181,13 +181,14 @@ public class MiningMacro {
     }
 
     private static void initMoveForward() {
+        moveCounter = 0;
         client.options.forwardKey.setPressed(true);
 
     }
 
     private static void updateMoveForward() {
         moveCounter++;
-
+        MacroMod.LOGGER.info("Move Counter: " + moveCounter);
         if (moveCounter >= ticksOfForwardMovement) { 
             moveCounter = 0;
             client.options.forwardKey.setPressed(false);
@@ -197,10 +198,22 @@ public class MiningMacro {
 
     private static void initScanOres() {
         detectedOres = detectOres();
+       
+    }
+
+    private static void updateScanOres() {
+        if (detectedOres.isEmpty()) {
+            updateState(MiningMacroStates.MOVE_FOWARD);
+            return;
+        }
+        updateState(MiningMacroStates.MINE_ORES);
     }
 
     private static void initMineOres() {
-        
+        if (detectedOres.isEmpty()) {
+            updateState(MiningMacroStates.MOVE_FOWARD);
+            return;
+        }
         setTargetBlock(detectedOres.get(0));
         startMiningBlock();
     }
